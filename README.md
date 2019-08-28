@@ -1,5 +1,5 @@
 # Float-project---Natoure
-Projekt prezentuje fikcyjną firmę nazwaną "Natoure", która oferuje organizację wycieczek przygodowych.\
+Projekt prezentuje fikcyjną firmę nazwaną "Natoure", która oferuje organizację wycieczek przygodowych.
 
 # Wykorzystane technologie
 Strona wykonana w starej technice pozycjonowania elementów, tj. na float-ach.\
