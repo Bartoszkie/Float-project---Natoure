@@ -1,0 +1,125 @@
+.form {
+    &__group:not(:last-child) {
+        margin-bottom: 2rem;
+    }
+
+    &__input {
+        font-size: 1.5rem;
+        //input elemenets nie dziedziczą automatycznie fonta
+        font-family: inherit;
+        color: inherit;
+        //podczas styylowania paddingu inputa 
+        //zawsze zrobić szersze boki niż góre i dół 
+        padding: 1.5rem 2rem;
+        border-radius: 2px;
+        background-color: rgba($color-white, .5);
+        border: none;
+        border-bottom: 3px solid transparent;
+        width: 90%;
+        display: block;
+        transition: all .3s;
+
+        @include respond(tab-port) {
+            width: 100%;
+            margin-bottom: 2rem;
+        }
+
+        &:focus {
+            outline: none;
+            //dla userów którzy korzystają tylko z klawiatury 
+            //musimy zrobić równiez widoczny focus aby wiedzieli gdzie są 
+            //*box shadow - (Xdircetion, Ydirection, blur direction, color)
+            box-shadow: 0 1rem 2rem rgba($color-black, .1);
+            border-bottom: 3px solid $color-primary;
+        }
+
+        //dwuktopek reprezentuje to co jest już aktualnie na stronie
+        //pojedunczy reprezentuje jakieś akcje 
+        &::-webkit-input-placeholder {
+            color: $color-grey-dark-2;
+        }
+
+        //validacja konkretnych styli w css podczas gdy wpisujemy coś 
+        //focus - podczas wpisywanie - invalid - pseudoklasa działająca podczas nieprawidłowej validacji 
+        &:focus:invalid {
+            border-bottom: 3px solid $color-secondary-dark;
+        }
+    }
+
+    &__label {
+        font-size: 1.2rem;
+        font-weight: 700;
+        margin-left: 2rem;
+        margin-top: .7rem;
+        display: block;
+        transition: all .3s;
+    }
+
+    //sibling selector [+] - zaznaczy nam rodzeństwo elementu
+    //które napotka zaraz po pierwszym elemencie
+    //jakbyśmy chcieli zaznaczyć wszyuekit to wtedy [~]
+
+    //dopóki placeholder widać to label jest opacity 0 
+    //oraz vidoczność schowana 
+    &__input:placeholder-shown + &__label {
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-4rem);
+    }
+
+    &__radio-group {
+        width: 49%;
+        display: inline-block;
+
+        @include respond(tab-port) {
+            width: 100%;
+            margin-bottom: 2rem;
+        }
+    }
+
+
+    &__radio-input {
+        display: none;
+    }
+
+    &__radio-label {
+        font-size: $default-font-size;
+        cursor: pointer;
+        position: relative;
+        padding-left: 4.5rem;
+    }
+
+    &__radio-button {
+        height: 3rem;
+        width: 3rem;
+        border: 5px solid $color-primary;
+        border-radius: 50%;
+        display: inline-block;
+        position: absolute;
+        left: 0;
+        top: -.4rem;
+
+        &::after {
+            content: "";
+            display: block;
+            height: 1.3rem;
+            width: 1.3rem;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: $color-primary;
+            opacity: 0;
+            transition: opacity .2s;
+        }
+    }
+
+    //jeli radio button jest zaznaczony to chcemy żeby nam zmienił opacity naszego 
+    //span element na "1". Ale input radio nie jest direct sibling span element
+    //jednakże span element jest label, który jest powiązany z input radio. 
+    //więc musimy tylko zejść poziomem niżej do elementu span w label i zmienić jego opacity
+    &__radio-input:checked ~ &__radio-label &__radio-button::after {
+        opacity: 1;
+    }
+}

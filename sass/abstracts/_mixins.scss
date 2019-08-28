@@ -1,0 +1,77 @@
+@mixin clearfix {
+    &::after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+
+@mixin absCenter {
+    position: absolute;
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
+}
+
+//MEDIA QUERY MANAGER 
+/*
+ 0 - 600px: PHONE 
+ 600 - 900px: Tablet portrait 
+ 900 - 1200px: Tablet landscape 
+ 1200 - 1800px: is where our normal styles apply 
+ 1800px + : big desktops 
+ */
+
+//  @mixin respond-phone {
+//      @media(max-width: 600px) {
+//         //content directive - przekaż do mixina cały blok gdzie 
+//         //został wstrzyknięty 
+//         @content;
+//      }
+//  }
+
+ /*
+ $breakpoint argument choices: 
+ - phone 
+ - tab-port
+ - tab-land
+ - big-desktop
+ */
+
+ //ORDER: Base + typography > general layout + grid > page layout > components
+
+ //1em = 16px
+
+ @mixin respond($breakpoint){
+    @if $breakpoint == phone {
+        @media only screen and (max-width: 37.5em) {     //600px
+            @content;
+         }
+    }
+    
+    @if $breakpoint == tab-port {      //900px
+        @media only screen and (max-width: 56.25em) {
+            @content;
+         }
+    }
+
+    @if $breakpoint == tab-land {      //1200px
+        @media only screen and (max-width: 75em) {
+        
+            @content;
+         }
+    }
+
+    @if $breakpoint == big-desktop {       //1800px
+        //tutaj zaczynając od 1800px, bo wczesniej od 1200px do 1800px mamy default style
+        @media only screen and (min-width: 112.5em) {
+        
+            @content;
+         } 
+    }
+ }
+
+ /*
+    jesli user zmienis swoj default font-size w browser media query z pixelami nie zadziałają 
+    ems są lepsze dla meda query
+    */

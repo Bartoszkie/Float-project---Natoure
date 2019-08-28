@@ -1,0 +1,34 @@
+tworzenie środowiska do npm 
+// npm init 
+// npm install node-sass --save-dev 
+// create: input / output -> script: compile:sass: node -sass file-in file-out w(watching)
+
+
+odpalanie skryptów: 
+SCSS: 
+//wejsc do foldreu zawierającego sass files 
+//uruchomić polecenie skryptu: npm run compile:sass
+//działa 
+
+odplanaie live-server npm 
+//wejsc do folderu zawierającego proekt
+//uruchomić polecenie: live-server
+
+instalacja concat npm w środowisku projektu
+npm install concat --save-dev
+
+instalacja autoprefixer npm w środowisku projektu
+npm install autoprefixer --save-dev
+UWAGA 
+żeby autoprefixer działał musimy zaintalowac również postcss-cli
+npm install postcss-cli --save-dev
+
+opis taska autoprefixer-a: 
+    "prefix:css": "postcss --use autoprefixer -b 'last 10 versions' css/style.concat.css -o css/style.prefix.css"
+postcss - nazwa package-u którego chcemy użyć
+--use autoprefixer - nazwa tego co chcemy z niej użyć 
+-b - browsers które chcemy namiezuć prefixami: 'last 10 versions' - ostatnie 10 wersji (do nich dopisz prefixy, leci wszystko z can I use)
+css/style.concat.css - input file
+css/style.prefix.css - output file
+
+--parallel - niech działają w tym samym czasie 
