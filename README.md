@@ -4,3 +4,6 @@ Projekt prezentuje fikcyjną firmę nazwaną "Natoure", która oferuje organizac
 # Wykorzystane technologie
 Strona wykonana w starej technice pozycjonowania elementów, tj. na float-ach.\
 Użyty preprocesor CSS - Sass. Struktura projektu utrzymana w notacji BEM. 
+
+# Live demo: 
+https://bartoszkie.github.io/Float-project---Natoure/.
